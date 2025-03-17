@@ -1,0 +1,406 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: #4361ee;
+    --primary-hover: #3a56d4;
+    --secondary-color: #20bf6b;
+    --secondary-hover: #1ca45b;
+    --background: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #2d3436;
+    --text-light: #636e72;
+    --border-color: #e0e0e0;
+    --shadow: rgba(17, 12, 46, 0.08);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h1 i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 3px;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+h2 i {
+    margin-right: 8px;
+}
+
+.format-selection-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+    margin-bottom: 25px;
+    padding: 15px;
+    background: #f5f7ff;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.format-selection {
+    flex: 1;
+}
+
+.format-selection label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.format-selection label i {
+    margin-right: 5px;
+    width: 16px;
+    text-align: center;
+}
+
+select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+    font-size: 15px;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px top 50%;
+    background-size: 12px auto;
+    padding-right: 30px;
+}
+
+select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+    outline: none;
+}
+
+select:hover {
+    border-color: #b0b0b0;
+}
+
+.upload-container {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#fileInput {
+    display: none;
+}
+
+/* 隐藏辅助元素，但保持对屏幕阅读器可见 */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.btn-upload {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-upload i {
+    margin-right: 8px;
+}
+
+.btn-upload:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-upload:hover:before {
+    left: 100%;
+}
+
+.btn-upload:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(67, 97, 238, 0.25);
+}
+
+.btn-upload:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(67, 97, 238, 0.2);
+}
+
+.preview-container, .result-container {
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 12px;
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+}
+
+.preview-container:hover, .result-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.image-preview, .result-preview {
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+}
+
+.image-preview img, .result-preview img {
+    max-width: 100%;
+    max-height: 400px;
+    border-radius: 6px;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.image-preview img:hover, .result-preview img:hover {
+    transform: scale(1.01);
+}
+
+.image-info {
+    background: #edf2fc;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border-left: 4px solid #4361ee;
+}
+
+.image-info p {
+    margin: 8px 0;
+    color: var(--text-color);
+    font-size: 14px;
+}
+
+.image-info i {
+    margin-right: 8px;
+    width: 16px;
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.image-info span {
+    font-weight: 500;
+    color: #3a56d4;
+}
+
+.action-buttons {
+    margin-bottom: 30px;
+}
+
+.btn-convert {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(32, 191, 107, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-convert i {
+    margin-right: 8px;
+}
+
+.btn-convert:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-convert:hover:before {
+    left: 100%;
+}
+
+.btn-convert:hover {
+    background-color: var(--secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(32, 191, 107, 0.25);
+}
+
+.btn-convert:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(32, 191, 107, 0.2);
+}
+
+/* 加载动画 */
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+}
+
+.loading-spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 25px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.loading-spinner i {
+    font-size: 48px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.loading-spinner p {
+    margin-top: 10px;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.02);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-light);
+    font-size: 14px;
+    padding: 20px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: var(--primary-hover);
+    text-decoration: underline;
+}
+
+footer i {
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 20px 15px;
+        padding: 20px;
+    }
+    
+    .format-selection-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .btn-upload, .btn-convert {
+        padding: 12px;
+    }
+} 
