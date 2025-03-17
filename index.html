@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片格式转换器</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-images"></i> 图片格式转换器</h1>
+        
+        <div class="format-selection-container">
+            <div class="format-selection">
+                <label for="originalFormatSelect"><i class="fas fa-file-image"></i> 原文件类型:</label>
+                <select id="originalFormatSelect" disabled>
+                    <option value="">请先上传图片</option>
+                    <option value="jpg">JPG/JPEG</option>
+                    <option value="png">PNG</option>
+                    <option value="bmp">BMP</option>
+                    <option value="webp">WEBP</option>
+                    <option value="gif">GIF</option>
+                </select>
+            </div>
+            <div class="format-selection">
+                <label for="formatSelect"><i class="fas fa-exchange-alt"></i> 目标文件类型:</label>
+                <select id="formatSelect">
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPG/JPEG</option>
+                    <option value="bmp">BMP</option>
+                    <option value="webp">WEBP</option>
+                    <option value="gif">GIF</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="upload-container">
+            <label for="fileInput" class="sr-only">选择图片文件</label>
+            <input type="file" id="fileInput" accept="image/*" aria-label="选择图片文件">
+            <button id="uploadBtn" class="btn-upload"><i class="fas fa-upload"></i> 选择图片文件</button>
+        </div>
+        
+        <div class="preview-container" id="previewContainer" style="display: none;">
+            <h2><i class="fas fa-eye"></i> 预览</h2>
+            <div class="image-preview">
+                <img id="previewImage" src="" alt="预览图">
+            </div>
+            <div class="image-info">
+                <p><i class="fas fa-info-circle"></i> 原始格式: <span id="originalFormat"></span></p>
+                <p><i class="fas fa-expand-arrows-alt"></i> 图片尺寸: <span id="imageSize"></span></p>
+                <p><i class="fas fa-weight-hanging"></i> 文件大小: <span id="fileSize"></span></p>
+            </div>
+        </div>
+        
+        <div class="action-buttons" id="actionButtons" style="display: none;">
+            <button id="convertBtn" class="btn-convert"><i class="fas fa-sync-alt"></i> 转换并下载</button>
+        </div>
+        
+        <div class="result-container" id="resultContainer" style="display: none;">
+            <h2><i class="fas fa-check-circle"></i> 转换结果</h2>
+            <div class="result-preview">
+                <img id="resultImage" src="" alt="转换后图片">
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 图片格式转换器 | <a href="https://github.com/HazeBlue/JpgToPng" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a></p>
+    </footer>
+    
+    <script src="js/script.js"></script>
+</body>
+</html> 
